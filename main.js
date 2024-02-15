@@ -160,7 +160,7 @@ function openCvReady(){
             let inputImage = cv.imread(image);//reading
             console.log("Input image width",inputImage.cols,"Input image width",inputImage.rows);
             //load the model
-            model = await tf.loadGraphModel("model.json");
+            model = await tf.loadGraphModel("./x/model.json");
             //calculate model size now 
             const inputTensorShape = model.inputs[0].shape;
             const modelWidth = inputTensorShape[1];
