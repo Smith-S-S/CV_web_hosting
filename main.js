@@ -16,7 +16,7 @@ function handleImageInput(event){
 
 //Compute Color for Labels
 function computeColorforLabels(className){
-    if(classID=='person'){
+    if(className=='person'){
         color=[85, 45, 255,200];
       }
       else if (className='cup'){
