@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV WEB</title>
+
+
+<!-- We want to add the opencv file in the very beginning  
+(it may take time to load the page to we make it asyn so page open if the opencv is loading)-->
+<script async src="opencv.js" onload="openCvReady()"></script>
+
+<!-- link the css file to the project -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Adding material icons for the web from google -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<!-- Adding font from google -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <!-- main page main.class name = main page (inside this we will have everything) -->
+    <div class="main-page">
+
+        <!------------ want 3 division inside ------------->
+        <!------------ side line ------------->
+        <div class="side-line"></div>
+
+        <!------------ side bar (in this we adding the icons)------------->
+        <div class="side-bar">
+
+            <!------------ uploading the file ------------->
+            <input type="file" id="image_up" accept="image/*" style="display: none;">
+            <label for="image_up" class="circle" ><i class="material-symbols-outlined" style="font-size: 50px; color: white;" >add_photo_alternate</i></label>
+            <!------------ Downloading the file ------------->
+            <button id="download-btn" style="display: none;">Download Image</button>
+            
+
+
+            <!------------ we are creating the icons inside the circle ------------->
+            <span class="circle" id="button_rgb"><i class="material-symbols-outlined" style="font-size: 50px; color: white;">palette</i></span>
+            <span class="circle" id="button_contrast"><i class="material-symbols-outlined" style="font-size: 50px; color: white;">contrast</i></span>
+            <span class="circle" id="button_blur"><i class="material-symbols-outlined" style="font-size: 50px; color: white;">detection_and_zone</i></span>
+            <span class="circle" id="button_edge"><i class="material-symbols-outlined" style="font-size: 50px; color: white;">grade</i></span>
+            <!-- <span class="circle circle-blue"><i class="material-symbols-outlined" style="font-size: 50px; color: white;">videocam</i></span> -->
+            <label for="download-btn" class="circle circle-blue" ><i class="material-symbols-outlined" style="font-size: 50px; color: white;">download</i></label>
+            
+
+        </div>
+        <!------------ big box ------------->
+        <div class="right-pannel">
+
+            <!------------ want 2 division inside (like header and content pannel) ------------->
+            <!------------ header bar ------------->
+            <div class="header">
+                <div class="empty"></div>
+                <h1>Object Detection</h1>
+                <div class="logo-center"><img src="new_logo.png" alt="" width="100"></div>
+                
+            </div>
+            <!------------ content-pannel bar ------------->
+            <div class="content-pannel">
+
+                <!-- we are going to create an "canvas"  what ever we do with "openCV" it in the canvas  -->
+                <img id="tab-img" src="tablet.png" width="725" height="590" alt="" >
+
+                <!------------ For ovenCV ------------->
+                <canvas id="main-canva" width="705" height="570">
+                    <img id="canva-img" src="car.png" width="705" height="570" alt="">
+                    
+                </canvas>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+   
+    <!-- Linking the java in the end of the body because 1st our web want to load and need to start the function -->
+    <script src="main.js"></script>
+    <!-- Load TensorFlow js this is required to use the COCO SSD Model -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <!-- Load the Yolo Model -->
+    <script src="../../Resources/yolov8n_web_model/model.json"> </script>
+    <!-- Load the COCO SSD Model -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+
+
+
+</body>
+</html>
+
+
+<!-- now we are doing the object dection for that we need tensorflow.js and cocssd model -->
